@@ -55,7 +55,7 @@ bot.on("message", async message => {
   logs.send(embed);
   
   } else {
-    message.channel.reply("You are not Moderator!");
+    message.reply("You are not Moderator!");
   return;
     }
   }
