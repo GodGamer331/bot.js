@@ -54,6 +54,8 @@ bot.on("message", async message => {
     var embed = new Discord.RichEmbed()
         .setTitle("Help commands!")
         .addField("!ping", "Bot will reply with Pong!")
+        .addField("!report", "Reports a user!")
+        .addField("!warn", "Warns a user!")
         .setFooter("Made by JustNela#6666")
         .setColor(0x66BB6A)
         .setThumbnail(message.author.avatarURL)
