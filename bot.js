@@ -35,7 +35,7 @@ bot.on("message", async message => {
     .addField("Reason:", `${b}`);
   if (!logs) return message.channel.send("Please make logs channel or add permissions to logs channel for our bot!");
   logs.send(embed);
-   ;embed)
+
   }
   if (cmd === `${prefix}help`){
     var embed = new Discord.RichEmbed()
