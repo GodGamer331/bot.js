@@ -31,7 +31,7 @@ bot.on("message", async message => {
     .setFooter("This is a Report :D")
     .addField("User Reported:", `${a}`)
     .addField("Reported by:", `${message.author}`)
-    .addField("Reason:" `${b}`);
+    .addField("Reason:", `${b}`);
   }
   if (cmd === `${prefix}help`){
     var embed = new Discord.RichEmbed()
