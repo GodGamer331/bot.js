@@ -43,7 +43,7 @@ bot.on("message", async message => {
   
   if (!a) return message.channel.send("Please specify a user!")
   if (cmd === `${prefix}warn`){
-    if(message.member.has(mods.id)) {
+    if(message.member.roles.has(mods.id)) {
       
     var embed = new Discord.RichEmbed()
     .setTitle("New Warning!")
