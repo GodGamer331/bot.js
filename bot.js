@@ -19,10 +19,12 @@ bot.on("message", async message => {
   let a = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   let b = args.join(" ").slice(22);
   let logs = message.guild.channels.find(`name`, `logs`);
+  let mods = message.guild.roles.find("name", "Moderator");
   
   if (cmd === `${prefix}ping`){
     message.channel.send(":ping_pong: Pong!");
   
+  return;
   }
   if (!a) return message.channel.send("Please specify a user!")
   if (cmd === `${prefix}report`){
@@ -35,10 +37,13 @@ bot.on("message", async message => {
     .addField("Reason:", `${b}`);
   if (!logs) return message.channel.send("Please make logs channel or add permissions to logs channel for our bot!");
   logs.send(embed);
-
+  
+  return;
   }
   if (!a) return message.channel.send("Please specify a user!")
   if (cmd === `${prefix}warn`){
+    if(message.member.has(mods.id)) {
+      
     var embed = new Discord.RichEmbed()
     .setTitle("New Warning!")
     .setColor(0xFBC02D)
@@ -48,7 +53,11 @@ bot.on("message", async message => {
     .addField("Reason:", `${b}`);
   if (!logs) return message.channel.send("Please make logs channel or add permissions to logs channel for our bot!");
   logs.send(embed);
-
+  
+  } else {
+    message.channel.reply("You are not Moderator!");
+  return;
+    }
   }
   if (cmd === `${prefix}help`){
     var embed = new Discord.RichEmbed()
@@ -60,6 +69,7 @@ bot.on("message", async message => {
         .setColor(0x66BB6A)
         .setThumbnail(message.author.avatarURL)
     message.channel.sendEmbed(embed)
+    return;
   }
 });
 
