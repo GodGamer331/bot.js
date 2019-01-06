@@ -3,7 +3,8 @@ const bot = new Discord.Client({disableEveryone: true});
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online!`);
-  bot.user.setActivity(`Hey, Wassup!`);
+  
+  bot.user.setActivity("To my creator JustNela#666", {type: "LISTENING"});
 });
 
 bot.on("message", async message => {
@@ -26,6 +27,7 @@ bot.on("message", async message => {
         .addField("!ping", "Bot will reply with Pong!")
         .setFooter("Made by JustNela#6666")
         .setColor(0x66BB6A)
+        .setThumbnail(message.author.avatarURL)
     message.channel.sendEmbed(embed)
   }
 });
