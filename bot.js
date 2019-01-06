@@ -18,6 +18,7 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
   let a = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   let b = args.join(" ").slice(22);
+  let logs = message.guild.channels.find(`name`, `logs`);
   
   if (cmd === `${prefix}ping`){
     message.channel.send(":ping_pong: Pong!");
@@ -32,7 +33,9 @@ bot.on("message", async message => {
     .addField("User Reported:", `${a}`)
     .addField("Reported by:", `${message.author}`)
     .addField("Reason:", `${b}`);
-    message.channel.sendEmbed(embed)
+  if (!logs) return message.channel.send("Please make logs channel or add permissions to logs channel for our bot!");
+  logs.send(embed);
+   ;embed)
   }
   if (cmd === `${prefix}help`){
     var embed = new Discord.RichEmbed()
