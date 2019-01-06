@@ -53,7 +53,8 @@ bot.on("message", async message => {
     .addField("Moderatoe:", `${message.author}`)
     .addField("Reason:", `${b}`);
   if (!logs) return message.channel.send("Please make logs channel or add permissions to logs channel for our bot!");
-  logs.send(embed);
+  logs.send(embed)
+  message.channel.send(":ok_hand:");
   
     } else {
       message.reply("You are not Moderator!");
