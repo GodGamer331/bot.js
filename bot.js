@@ -18,7 +18,13 @@ bot.on("message", async message => {
 
   if (cmd === `${prefix}ping`){
     message.channel.send(":ping_pong: Pong!");
+  
   }
+  if (cmd === `${prefix}embed`){
+    var embed = new Discord.RichEmbed()
+        .setTitle("Test Embed")
+        .setFooter("This is footer!")
+    message.channel.sendEmbed(embed)
 });
 
 bot.login(process.env.token);
