@@ -55,9 +55,9 @@ bot.on("message", async message => {
   if (!logs) return message.channel.send("Please make logs channel or add permissions to logs channel for our bot!");
   logs.send(embed);
   
-  } else {
-    message.channel.send("You are not Moderator!");
-   
+    } else {
+      message.reply("You are not Moderator!");
+    
   return;
     }
   }
