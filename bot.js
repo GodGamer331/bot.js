@@ -32,7 +32,7 @@ bot.on("message", async message => {
     .addField("User Reported:", `${a}`)
     .addField("Reported by:", `${message.author}`)
     .addField("Reason:" `${b}`);
-    
+  }
   if (cmd === `${prefix}help`){
     var embed = new Discord.RichEmbed()
         .setTitle("Help commands!")
