@@ -20,10 +20,12 @@ bot.on("message", async message => {
     message.channel.send(":ping_pong: Pong!");
   
   }
-  if (cmd === `${prefix}embed`){
+  if (cmd === `${prefix}help`){
     var embed = new Discord.RichEmbed()
-        .setTitle("Test Embed")
-        .setFooter("This is footer!")
+        .setTitle("Help commands!")
+        .addField("!ping", "Bot will reply with Pong!")
+        .setFooter("Made by JustNela#6666")
+        .setColor(0x66BB6A)
     message.channel.sendEmbed(embed)
   }
 });
