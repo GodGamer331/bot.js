@@ -40,6 +40,7 @@ bot.on("message", async message => {
   
   return;
   }
+  
   if (!a) return message.channel.send("Please specify a user!")
   if (cmd === `${prefix}warn`){
     if(message.member.has(mods.id)) {
@@ -55,11 +56,13 @@ bot.on("message", async message => {
   logs.send(embed);
   
   } else {
-    message.reply("You are not Moderator!");
+    message.channel.send("You are not Moderator!");
+   
   return;
     }
   }
-  if (cmd === `${prefix}help`){
+  
+   if (cmd === `${prefix}help`){
     var embed = new Discord.RichEmbed()
         .setTitle("Help commands!")
         .addField("!ping", "Bot will reply with Pong!")
