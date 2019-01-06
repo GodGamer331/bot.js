@@ -25,6 +25,7 @@ bot.on("message", async message => {
         .setTitle("Test Embed")
         .setFooter("This is footer!")
     message.channel.sendEmbed(embed)
+  }
 });
 
 bot.login(process.env.token);
