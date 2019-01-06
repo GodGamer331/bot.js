@@ -37,6 +37,19 @@ bot.on("message", async message => {
   logs.send(embed);
 
   }
+  if (!a) return message.channel.send("Please specify a user!")
+  if (cmd === `${prefix}warn`){
+    var embed = new Discord.RichEmbed()
+    .setTitle("New Warning!")
+    .setColor(0xFBC02D)
+    .setFooter("Warning")
+    .addField("User Warned:", `${a}`)
+    .addField("Moderatoe:", `${message.author}`)
+    .addField("Reason:", `${b}`);
+  if (!logs) return message.channel.send("Please make logs channel or add permissions to logs channel for our bot!");
+  logs.send(embed);
+
+  }
   if (cmd === `${prefix}help`){
     var embed = new Discord.RichEmbed()
         .setTitle("Help commands!")
