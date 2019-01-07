@@ -86,6 +86,7 @@ bot.on("message", async message => {
   
   if (cmd === `Hi there`){
     message.channel.send("Hi! My prefix is ``!``")
+  }
 });
 
 bot.login(process.env.token);
