@@ -51,6 +51,7 @@ bot.on("message", async message => {
     .setFooter("Warning")
     .addField("User Warned:", `${a}`)
     .addField("Moderatoe:", `${message.author}`)
+    .timestamp
     .addField("Reason:", `${b}`);
   if (!logs) return message.channel.send("Please make logs channel or add permissions to logs channel for our bot!");
   logs.send(embed)
@@ -72,6 +73,7 @@ bot.on("message", async message => {
         .setFooter("Made by JustNela#6666")
         .setColor(0x66BB6A)
         .setThumbnail(message.author.avatarURL)
+        
     message.channel.sendEmbed(embed)
     return;
   }
