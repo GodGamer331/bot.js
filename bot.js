@@ -32,6 +32,11 @@ bot.on("message", async message => {
   
   return;
   }
+  if (cmd === `Hi there`){
+    message.channel.send("Hi! My prefix is ``!``")
+    return;
+  }
+
   if (!a) return message.channel.send("Please specify a user!")
   if (cmd === `${prefix}report`){
     var embed = new Discord.RichEmbed()
@@ -83,12 +88,8 @@ bot.on("message", async message => {
     message.channel.sendEmbed(embed)
     return;
   }
-  
-  if (cmd === `Hi there`){
-    message.channel.send("Hi! My prefix is ``!``")
-    return;
-  }
 });
+
 
 bot.login(process.env.token);
 
