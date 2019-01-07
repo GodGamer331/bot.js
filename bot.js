@@ -32,10 +32,10 @@ bot.on("message", async message => {
   
   return;
   }
-  if (cmd === `Hi there`){
-    message.channel.send("Hi! My prefix is ``!``")
-    return;
-  }
+  //if (cmd === `Hi there`){
+ //   message.channel.send("Hi! My prefix is ``!``")
+  //  return;
+  //}
 
   if (!a) return message.channel.send("Please specify a user!")
   if (cmd === `${prefix}report`){
