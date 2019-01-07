@@ -30,7 +30,7 @@ bot.on("message", async message => {
   if (cmd === `${prefix}ping`){
     message.channel.send(":ping_pong: Pong!");
   
-  return;
+  break;
   }
   //if (cmd === `Hi there`){
  //   message.channel.send("Hi! My prefix is ``!``")
@@ -49,7 +49,7 @@ bot.on("message", async message => {
   if (!logs) return message.channel.send("Please make ``logs`` channel or add permissions to logs channel for our bot!");
   logs.send(embed);
   
-  return;
+  break;
   }
   
   if (!a) return message.channel.send("Please specify a user!")
@@ -71,7 +71,7 @@ bot.on("message", async message => {
     } else {
       message.reply("You are not Moderator!");
     
-  return;
+  break;
     }
   }
   
@@ -86,7 +86,8 @@ bot.on("message", async message => {
         .setThumbnail(message.author.avatarURL)
         
     message.channel.sendEmbed(embed)
-    return;
+  
+   break;
   }
 });
 
