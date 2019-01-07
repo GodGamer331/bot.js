@@ -51,7 +51,7 @@ bot.on("message", async message => {
     .setFooter("Warning")
     .addField("User Warned:", `${a}`)
     .addField("Moderatoe:", `${message.author}`)
-    .timestamp
+    .timestamp(date)
     .addField("Reason:", `${b}`);
   if (!logs) return message.channel.send("Please make logs channel or add permissions to logs channel for our bot!");
   logs.send(embed)
