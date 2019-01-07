@@ -10,40 +10,14 @@ bot.on("ready", async () => {
 
 
 
-module.exports.run = async (bot, message, args, prefix) => {
 
-    if (!message.member.hasPermission("MANAGE_SERVER")) return message.reply("No no no.");
-    if (!args[0] || args[0 == "help"]) return message.reply(`Usage: !prefix <desired prefix here>"`);
-
-    let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
-
-    prefixes[message.guild.id] = {
-        prefixes: args[0]
-    };
-
-    fs.writeFile("./prefixes.json", JSON.stringify(prefixes), (err) => {
-        if (err) console.log(err)
-    });
-
-    let sEmbed = new Discord.RichEmbed()
-        .setColor("#4286f4")
-        .setTitle("Prefix Set!")
-        .setDescription(`Set to ${args[0]}`);
-
-    message.channel.send(sEmbed);
-
-}
-
-module.exports.help = {
-    name: "prefix"
-}
 
 bot.on("message", async message => {
 
   if (message.author.bot) return;
   if (message.channel.type === "dm") return;
 
-  let prefix = ./prefixes.json
+  let prefix = "!";
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
@@ -51,6 +25,7 @@ bot.on("message", async message => {
   let b = args.join(" ").slice(22)
   let logs = message.guild.channels.find(`name`, `logs`);
   let mods = message.guild.roles.find("name", "Moderator");
+  let premium = message.guild.roles.find("name", "★†Premium†★");
   
   if (cmd === `${prefix}ping`){
     message.channel.send(":ping_pong: Pong!");
@@ -66,7 +41,7 @@ bot.on("message", async message => {
     .addField("User Reported:", `${a}`)
     .addField("Reported by:", `${message.author}`)
     .addField("Reason:", `${b}`);
-  if (!logs) return message.channel.send("Please make logs channel or add permissions to logs channel for our bot!");
+  if (!logs) return message.channel.send("Please make ``logs`` channel or add permissions to logs channel for our bot!");
   logs.send(embed);
   
   return;
@@ -82,9 +57,9 @@ bot.on("message", async message => {
     .setFooter("Warning")
     .addField("User Warned:", `${a}`)
     .addField("Moderatoe:", `${message.author}`)
-    .timestamp(date)
+    .setTimestamp(date)
     .addField("Reason:", `${b}`);
-  if (!logs) return message.channel.send("Please make logs channel or add permissions to logs channel for our bot!");
+  if (!logs) return message.channel.send("Please make ``logs`` channel or add permissions to logs channel for our bot!");
   logs.send(embed)
   message.channel.send(":ok_hand:");
   
@@ -95,7 +70,7 @@ bot.on("message", async message => {
     }
   }
   
-   if (cmd === `${prefix}help`){
+  if (cmd === `${prefix}help`){
     var embed = new Discord.RichEmbed()
         .setTitle("Help commands!")
         .addField("!ping", "Bot will reply with Pong!")
@@ -111,4 +86,4 @@ bot.on("message", async message => {
 });
 
 bot.login(process.env.token);
-#
+
