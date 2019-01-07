@@ -1,23 +1,54 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
-
+const fs = require("fs");
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online!`);
   
   bot.user.setActivity("To my creator JustNela#666", {type: "LISTENING"});
 });
 
+
+
+
+module.exports.run = async (bot, message, args, prefix) => {
+
+    if (!message.member.hasPermission("MANAGE_SERVER")) return message.reply("No no no.");
+    if (!args[0] || args[0 == "help"]) return message.reply(`Usage: !prefix <desired prefix here>"`);
+
+    let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+
+    prefixes[message.guild.id] = {
+        prefixes: args[0]
+    };
+
+    fs.writeFile("./prefixes.json", JSON.stringify(prefixes), (err) => {
+        if (err) console.log(err)
+    });
+
+    let sEmbed = new Discord.RichEmbed()
+        .setColor("#4286f4")
+        .setTitle("Prefix Set!")
+        .setDescription(`Set to ${args[0]}`);
+
+    message.channel.send(sEmbed);
+
+}
+
+module.exports.help = {
+    name: "prefix"
+}
+
 bot.on("message", async message => {
 
   if (message.author.bot) return;
   if (message.channel.type === "dm") return;
 
-  let prefix = '!';
+  let prefix = ./prefixes.json
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
   let a = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  let b = args.join(" ").slice(22);
+  let b = args.join(" ").slice(22)
   let logs = message.guild.channels.find(`name`, `logs`);
   let mods = message.guild.roles.find("name", "Moderator");
   
